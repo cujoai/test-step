@@ -1,0 +1,11 @@
+.idea/*
+!.idea/copyright
+!.idea/codeStyles
+*.pyc
+test_step.egg-info
+venv/*
+logs/*
+build/*
+dist/*
+report
+.DS_Store
