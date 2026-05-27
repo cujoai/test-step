@@ -19,6 +19,10 @@ source ./venv/bin/activate
 pip install -e ".[test]"
 ```
 
+Extras overview:
+
+- `.[test]`: contributor/development setup (test dependencies, lint tooling, and parallel test execution support).
+
 ## Run Tests
 
 In order to run tests on the command line
