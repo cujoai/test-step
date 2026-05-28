@@ -8,7 +8,7 @@ with Path("README.md").open() as fh:
 
 setuptools.setup(
     name="test-step",
-    version="1.0.0",
+    version="1.1.0",
     author="CUJO AI TestOps",
     author_email="testops@cujo.com",
     description="Test step decorator and HTML reporting plugin for pytest",
@@ -31,11 +31,11 @@ setuptools.setup(
     python_requires='>=3.10',
     install_requires=[
         'pytest>=8,<10',
-        'pytest-xdist~=3.8',
         'pytest-html~=4.1'
     ],
     extras_require={
         'test': [
+            'pytest-xdist~=3.8',
             'junitparser~=4.0',
             'ruff==0.12',
         ]

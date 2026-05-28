@@ -5,6 +5,7 @@ import threading
 from collections.abc import Callable
 from functools import wraps
 from pathlib import Path
+from types import TracebackType
 
 from test_step.html_reporting.extras import PassthroughExtras, Extras
 
@@ -73,12 +74,14 @@ class step:  # noqa: N801
         """
         return step(self.name, self.report_attachments)
 
-    def __enter__(self):
+    def __enter__(self) -> "step":
         if tracker := StepTrackerContext.get():
             tracker.enter(self.name, self.report_attachments)
         logger.info(f'Enter {self._header}')
+        return self
 
-    def __exit__(self, exc_type: str, exc_val: str, exc_tb: str):
+    def __exit__(self, exc_type: type[BaseException] | None, exc_val: BaseException | None,
+                 exc_tb: TracebackType | None) -> bool:
         result = 'Pass'
         if exc_val:
             result = f'Raised {exc_val!r}'
